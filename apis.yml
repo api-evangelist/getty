@@ -3,21 +3,51 @@ url: https://raw.githubusercontent.com/api-evangelist/getty/refs/heads/main/apis
 name: Getty Images
 x-type: company
 description: >-
-  Getty Images is the leading editorial and creative stock imagery licensor with REST APIs for search, asset retrieval, and licensing.
+  Getty Images is a premium stock media licensor of editorial and creative photography, illustrations,
+  video, and music. The Getty Images API exposes search, asset metadata, and download endpoints for
+  licensing partners and enterprise customers. Authentication is via API key + OAuth 2.0 client
+  credentials.
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - Stock Media
   - Images
   - Editorial
-  - Premium
+  - Video
+  - Music
   - Licensing
 created: '2026-05-08'
 modified: '2026-05-08'
 specificationVersion: '0.19'
-apis: []
+apis:
+  - aid: getty:platform
+    name: Getty Images API
+    description: >-
+      REST API at /v3 covering creative and editorial image search, video search, asset detail retrieval,
+      and download endpoints with size/license selection. All requests require an api-key header; elevated
+      operations (downloads, account-scoped) require an OAuth 2.0 bearer token via client credentials
+      grant.
+    humanURL: https://developer.gettyimages.com/docs/
+    baseURL: https://api.gettyimages.com/v3
+    tags:
+      - Images
+      - Video
+      - Search
+      - Editorial
+      - Creative
+    properties:
+      - type: Documentation
+        url: https://developer.gettyimages.com/docs/
+      - type: OpenAPI
+        url: https://api.gettyimages.com/swagger
+      - type: Authentication
+        url: https://developer.gettyimages.com/docs/authentication
 common:
   - type: Website
     url: https://www.gettyimages.com/
+  - type: DeveloperPortal
+    url: https://developer.gettyimages.com/
+  - type: OpenAPI
+    url: https://api.gettyimages.com/swagger
   - type: Plans
     url: plans/getty-plans-pricing.yml
   - type: RateLimits

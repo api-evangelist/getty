@@ -5,37 +5,45 @@ provider: Getty Images
 providerId: getty
 created: '2026-05-08'
 modified: '2026-05-08'
-reconciled: false
+reconciled: true
 tags:
 - Stock Media
 - Images
 - Editorial
-- Premium
+- Video
+- Music
 - Licensing
 - Plans
-description: Placeholder plans/pricing artifact for Getty Images. Replace with real published pricing once
-  the pipeline researches the provider's plans page.
-notes: Initial scaffold — plans/pricing have not yet been reconciled.
+description: >-
+  Getty Images API access is gated and tied to a commercial licensing agreement. There is no self-
+  serve free tier. Pricing is contract-based and reflects per-asset licensing (royalty-free packs,
+  rights-managed assets, premium subscriptions). The API itself does not bill; downloads consume your
+  license entitlement.
+notes: Sales-led; API access tied to a Getty licensing contract. Pricing reflects asset licenses, not API calls.
 sources:
 - https://www.gettyimages.com/
+- https://developer.gettyimages.com/docs/
 plans:
-- id: getty-default
-  name: To Be Reconciled
+- id: getty-licensing
+  name: Getty Licensing Agreement
   type: enterprise
-  description: Initial scaffold; replace with provider plan tiers once pricing is reconciled.
+  description: Contract-based access; pricing depends on subscription pack (image, video, premium) and download volume.
   entries:
-  - label: API Access
-    name: api_access
+  - label: License
+    name: license
     type: flat
-    metric: varies
+    metric: year
     limit: -1
-    timeFrame: usage
+    timeFrame: annual
     geo: global
     unit: 1
-    price: see https://www.gettyimages.com/
+    price: contact sales
     userMultiplied: false
   elements:
-  - name: Pending Reconciliation
+  - name: Royalty-free packs
+  - name: Rights-managed assets
+  - name: Premium Access subscriptions
+  - name: API access included
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

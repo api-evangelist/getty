@@ -5,31 +5,38 @@ provider: Getty Images
 providerId: getty
 created: '2026-05-08'
 modified: '2026-05-08'
-reconciled: false
+reconciled: true
 tags:
 - Stock Media
 - Images
 - Editorial
-- Premium
+- Video
+- Music
 - Licensing
 - Rate Limiting
 - Quotas
 - Throttling
-description: Placeholder rate-limit artifact for Getty Images. Replace with real limits once researched.
-notes: Initial scaffold — limits have not yet been reconciled.
+description: >-
+  Getty Images throttles client requests based on per-API-key limits. When exceeded, the API returns
+  HTTP 429 with the message 'Account Over Queries Per Second Limit.' Specific QPS thresholds are
+  configured per contract and not published; standard public limit is in the low single-digit QPS
+  range.
+notes: Per-API-key QPS limit; exact threshold is contract-defined.
 sources:
-- https://www.gettyimages.com/
+- https://developer.gettyimages.com/docs/
 responseCodes:
   throttled: 429
 limits:
-- name: Default
+- name: Per API key
   scope: account
-  metric: varies
-  limit: see provider documentation
-  notes: Pending reconciliation.
+  metric: requests-per-second
+  limit: contract-defined
+  notes: Returns 'Account Over Queries Per Second Limit' on overage.
 policies:
 - name: Backoff Strategy
-  description: Clients should implement exponential backoff with jitter and honor any Retry-After header.
+  description: On 429, apply exponential backoff with jitter.
+- name: Caching
+  description: Cache search and asset metadata aggressively; do not re-fetch on every UI render.
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
