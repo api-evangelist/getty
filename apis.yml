@@ -1,7 +1,7 @@
 aid: getty
 url: https://raw.githubusercontent.com/api-evangelist/getty/refs/heads/main/apis.yml
 name: Getty Images
-x-type: company
+kind: company
 description: >-
   Getty Images is a premium stock media licensor of editorial and creative photography, illustrations,
   video, and music. The Getty Images API exposes search, asset metadata, and download endpoints for
