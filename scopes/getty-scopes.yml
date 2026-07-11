@@ -1,0 +1,23 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/getty-openapi.yml
+schemes:
+- name: oauth2
+  source: openapi/getty-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.gettyimages.com/oauth2/token
+  description: OAuth 2.0 client credentials for elevated operations.
+scopes:
+- scope: download
+  description: Request download URLs for licensed assets
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/getty-openapi.yml
+- scope: read
+  description: Read access to assets
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/getty-openapi.yml

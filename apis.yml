@@ -42,6 +42,8 @@ apis:
       - type: Authentication
         url: https://developer.gettyimages.com/docs/authentication
 common:
+  - type: OAuthScopes
+    url: scopes/getty-scopes.yml
   - type: GitHubOrganization
     url: https://github.com/gettyimages
   - type: LinkedIn
