@@ -42,6 +42,8 @@ apis:
       - type: Authentication
         url: https://developer.gettyimages.com/docs/authentication
 common:
+  - type: AgenticAccess
+    url: agentic-access/getty-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/getty-vulnerability-disclosure.yml
   - type: DomainSecurity
