@@ -1,0 +1,133 @@
+openapi: 3.1.0
+info:
+  title: Getty Downloads Images API
+  version: 3.0.0
+  description: 'Best-effort OpenAPI 3.1 description of the Getty Images API (v3) covering
+
+    creative and editorial image search, video search, asset detail retrieval,
+
+    download requests, and reference lookups. All requests require an api-key
+
+    header; elevated operations require an OAuth 2.0 client-credentials bearer
+
+    token. Sourced from https://developer.gettyimages.com/docs/ and
+
+    https://api.gettyimages.com/swagger.
+
+    '
+  contact:
+    name: Getty Images Developer Portal
+    url: https://developer.gettyimages.com/
+servers:
+- url: https://api.gettyimages.com/v3
+  description: Getty Images API production
+security:
+- apiKey: []
+- apiKey: []
+  oauth2:
+  - read
+  - download
+tags:
+- name: Images
+paths:
+  /images:
+    get:
+      summary: Get bulk image metadata
+      operationId: getImages
+      tags:
+      - Images
+      parameters:
+      - in: query
+        name: ids
+        required: true
+        schema:
+          type: string
+        description: Comma-separated list of image IDs
+      - in: query
+        name: fields
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Image metadata
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  images:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Image'
+  /images/{id}:
+    parameters:
+    - $ref: '#/components/parameters/AssetId'
+    get:
+      summary: Get a single image's metadata
+      operationId: getImage
+      tags:
+      - Images
+      responses:
+        '200':
+          description: Image
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Image'
+components:
+  parameters:
+    AssetId:
+      in: path
+      name: id
+      required: true
+      schema:
+        type: string
+  schemas:
+    Image:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        caption:
+          type: string
+        asset_family:
+          type: string
+          enum:
+          - creative
+          - editorial
+        collection_code:
+          type: string
+        collection_name:
+          type: string
+        date_created:
+          type: string
+          format: date-time
+        display_sizes:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              uri:
+                type: string
+                format: uri
+        artist:
+          type: string
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: Api-Key
+      description: API consumer key, sent as the api-key header.
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 client credentials for elevated operations.
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.gettyimages.com/oauth2/token
+          scopes:
+            read: Read access to assets
+            download: Request download URLs for licensed assets

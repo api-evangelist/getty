@@ -1,0 +1,128 @@
+openapi: 3.1.0
+info:
+  title: Getty Images Downloads Videos API
+  version: 3.0.0
+  description: 'Best-effort OpenAPI 3.1 description of the Getty Images API (v3) covering
+
+    creative and editorial image search, video search, asset detail retrieval,
+
+    download requests, and reference lookups. All requests require an api-key
+
+    header; elevated operations require an OAuth 2.0 client-credentials bearer
+
+    token. Sourced from https://developer.gettyimages.com/docs/ and
+
+    https://api.gettyimages.com/swagger.
+
+    '
+  contact:
+    name: Getty Images Developer Portal
+    url: https://developer.gettyimages.com/
+servers:
+- url: https://api.gettyimages.com/v3
+  description: Getty Images API production
+security:
+- apiKey: []
+- apiKey: []
+  oauth2:
+  - read
+  - download
+tags:
+- name: Videos
+paths:
+  /videos:
+    get:
+      summary: Get bulk video metadata
+      operationId: getVideos
+      tags:
+      - Videos
+      parameters:
+      - in: query
+        name: ids
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: fields
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Video metadata
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  videos:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Video'
+  /videos/{id}:
+    parameters:
+    - $ref: '#/components/parameters/AssetId'
+    get:
+      summary: Get a single video's metadata
+      operationId: getVideo
+      tags:
+      - Videos
+      responses:
+        '200':
+          description: Video
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Video'
+components:
+  parameters:
+    AssetId:
+      in: path
+      name: id
+      required: true
+      schema:
+        type: string
+  schemas:
+    Video:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        caption:
+          type: string
+        asset_family:
+          type: string
+          enum:
+          - creative
+          - editorial
+        clip_length:
+          type: string
+        date_created:
+          type: string
+          format: date-time
+        display_sizes:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              uri:
+                type: string
+                format: uri
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: Api-Key
+      description: API consumer key, sent as the api-key header.
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 client credentials for elevated operations.
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.gettyimages.com/oauth2/token
+          scopes:
+            read: Read access to assets
+            download: Request download URLs for licensed assets

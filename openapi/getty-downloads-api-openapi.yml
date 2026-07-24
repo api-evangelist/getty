@@ -1,0 +1,84 @@
+openapi: 3.1.0
+info:
+  title: Getty Images Downloads API
+  version: 3.0.0
+  description: 'Best-effort OpenAPI 3.1 description of the Getty Images API (v3) covering
+
+    creative and editorial image search, video search, asset detail retrieval,
+
+    download requests, and reference lookups. All requests require an api-key
+
+    header; elevated operations require an OAuth 2.0 client-credentials bearer
+
+    token. Sourced from https://developer.gettyimages.com/docs/ and
+
+    https://api.gettyimages.com/swagger.
+
+    '
+  contact:
+    name: Getty Images Developer Portal
+    url: https://developer.gettyimages.com/
+servers:
+- url: https://api.gettyimages.com/v3
+  description: Getty Images API production
+security:
+- apiKey: []
+- apiKey: []
+  oauth2:
+  - read
+  - download
+tags:
+- name: Downloads
+paths:
+  /downloads/{image_id}:
+    parameters:
+    - in: path
+      name: image_id
+      required: true
+      schema:
+        type: string
+    post:
+      summary: Request a download URL for a licensed image
+      operationId: downloadImage
+      tags:
+      - Downloads
+      security:
+      - apiKey: []
+        oauth2:
+        - download
+      parameters:
+      - in: query
+        name: size
+        schema:
+          type: string
+      - in: query
+        name: product_id
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Download URL
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  uri:
+                    type: string
+                    format: uri
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: Api-Key
+      description: API consumer key, sent as the api-key header.
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 client credentials for elevated operations.
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.gettyimages.com/oauth2/token
+          scopes:
+            read: Read access to assets
+            download: Request download URLs for licensed assets
