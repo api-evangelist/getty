@@ -7,7 +7,20 @@ description: >-
   video, and music. The Getty Images API exposes search, asset metadata, and download endpoints for
   licensing partners and enterprise customers. Authentication is via API key + OAuth 2.0 client
   credentials.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/getty.png
 tags:
   - Stock Media
   - Images
@@ -19,28 +32,76 @@ created: '2026-05-08'
 modified: '2026-05-08'
 specificationVersion: '0.19'
 apis:
-  - aid: getty:platform
-    name: Getty Images API
-    description: >-
-      REST API at /v3 covering creative and editorial image search, video search, asset detail retrieval,
-      and download endpoints with size/license selection. All requests require an api-key header; elevated
-      operations (downloads, account-scoped) require an OAuth 2.0 bearer token via client credentials
-      grant.
-    humanURL: https://developer.gettyimages.com/docs/
-    baseURL: https://api.gettyimages.com/v3
-    tags:
-      - Images
-      - Video
-      - Search
-      - Editorial
-      - Creative
-    properties:
-      - type: Documentation
-        url: https://developer.gettyimages.com/docs/
-      - type: OpenAPI
-        url: https://api.gettyimages.com/swagger
-      - type: Authentication
-        url: https://developer.gettyimages.com/docs/authentication
+- aid: getty:getty-downloads-api
+  name: Getty Images Downloads API
+  description: The Downloads API from Getty Images — 1 operation(s) for downloads.
+  humanURL: https://developer.gettyimages.com/docs/
+  baseURL: https://api.gettyimages.com/v3
+  tags:
+  - Downloads
+  properties:
+  - type: OpenAPI
+    url: openapi/getty-downloads-api-openapi.yml
+  - type: Documentation
+    url: https://developer.gettyimages.com/docs/
+  - type: Authentication
+    url: https://developer.gettyimages.com/docs/authentication
+- aid: getty:getty-images-api
+  name: Getty Images Images API
+  description: The Images API from Getty Images — 2 operation(s) for images.
+  humanURL: https://developer.gettyimages.com/docs/
+  baseURL: https://api.gettyimages.com/v3
+  tags:
+  - Images
+  properties:
+  - type: OpenAPI
+    url: openapi/getty-images-api-openapi.yml
+  - type: Documentation
+    url: https://developer.gettyimages.com/docs/
+  - type: Authentication
+    url: https://developer.gettyimages.com/docs/authentication
+- aid: getty:getty-reference-api
+  name: Getty Images Reference API
+  description: The Reference API from Getty Images — 1 operation(s) for reference.
+  humanURL: https://developer.gettyimages.com/docs/
+  baseURL: https://api.gettyimages.com/v3
+  tags:
+  - Reference
+  properties:
+  - type: OpenAPI
+    url: openapi/getty-reference-api-openapi.yml
+  - type: Documentation
+    url: https://developer.gettyimages.com/docs/
+  - type: Authentication
+    url: https://developer.gettyimages.com/docs/authentication
+- aid: getty:getty-search-api
+  name: Getty Images Search API
+  description: The Search API from Getty Images — 4 operation(s) for search.
+  humanURL: https://developer.gettyimages.com/docs/
+  baseURL: https://api.gettyimages.com/v3
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/getty-search-api-openapi.yml
+  - type: Documentation
+    url: https://developer.gettyimages.com/docs/
+  - type: Authentication
+    url: https://developer.gettyimages.com/docs/authentication
+- aid: getty:getty-videos-api
+  name: Getty Images Videos API
+  description: The Videos API from Getty Images — 2 operation(s) for videos.
+  humanURL: https://developer.gettyimages.com/docs/
+  baseURL: https://api.gettyimages.com/v3
+  tags:
+  - Videos
+  properties:
+  - type: OpenAPI
+    url: openapi/getty-videos-api-openapi.yml
+  - type: Documentation
+    url: https://developer.gettyimages.com/docs/
+  - type: Authentication
+    url: https://developer.gettyimages.com/docs/authentication
 common:
   - type: AgenticAccess
     url: agentic-access/getty-agentic-access.yml
