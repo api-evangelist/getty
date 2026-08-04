@@ -1,0 +1,22 @@
+{
+  "provider": "getty",
+  "sources": [
+    "getty-downloads-api-openapi.yml",
+    "getty-images-api-openapi.yml",
+    "getty-reference-api-openapi.yml",
+    "getty-search-api-openapi.yml",
+    "getty-videos-api-openapi.yml"
+  ],
+  "outputs": [
+    "getty-downloads-api-openapi.yml",
+    "getty-images-api-openapi.yml",
+    "getty-reference-api-openapi.yml",
+    "getty-search-api-openapi.yml",
+    "getty-videos-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

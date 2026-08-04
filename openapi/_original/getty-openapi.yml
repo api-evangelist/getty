@@ -1,0 +1,316 @@
+openapi: 3.1.0
+info:
+  title: Getty Images API
+  version: "3.0.0"
+  description: |
+    Best-effort OpenAPI 3.1 description of the Getty Images API (v3) covering
+    creative and editorial image search, video search, asset detail retrieval,
+    download requests, and reference lookups. All requests require an api-key
+    header; elevated operations require an OAuth 2.0 client-credentials bearer
+    token. Sourced from https://developer.gettyimages.com/docs/ and
+    https://api.gettyimages.com/swagger.
+  contact:
+    name: Getty Images Developer Portal
+    url: https://developer.gettyimages.com/
+servers:
+  - url: https://api.gettyimages.com/v3
+    description: Getty Images API production
+security:
+  - apiKey: []
+  - apiKey: []
+    oauth2: [read, download]
+paths:
+  /search/images/creative:
+    get:
+      summary: Search creative images
+      operationId: searchImagesCreative
+      tags: [Search]
+      parameters:
+        - $ref: "#/components/parameters/Phrase"
+        - $ref: "#/components/parameters/Page"
+        - $ref: "#/components/parameters/PageSize"
+        - in: query
+          name: sort_order
+          schema:
+            type: string
+            enum: [best_match, newest, oldest, most_popular, random]
+        - in: query
+          name: orientations
+          schema: { type: string }
+      responses:
+        "200":
+          description: Search results
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ImageSearchResult"
+  /search/images/editorial:
+    get:
+      summary: Search editorial images
+      operationId: searchImagesEditorial
+      tags: [Search]
+      parameters:
+        - $ref: "#/components/parameters/Phrase"
+        - $ref: "#/components/parameters/Page"
+        - $ref: "#/components/parameters/PageSize"
+        - in: query
+          name: editorial_segments
+          schema: { type: string }
+        - in: query
+          name: date_from
+          schema: { type: string, format: date }
+        - in: query
+          name: date_to
+          schema: { type: string, format: date }
+      responses:
+        "200":
+          description: Search results
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ImageSearchResult"
+  /search/videos/creative:
+    get:
+      summary: Search creative videos
+      operationId: searchVideosCreative
+      tags: [Search]
+      parameters:
+        - $ref: "#/components/parameters/Phrase"
+        - $ref: "#/components/parameters/Page"
+        - $ref: "#/components/parameters/PageSize"
+      responses:
+        "200":
+          description: Search results
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/VideoSearchResult"
+  /search/videos/editorial:
+    get:
+      summary: Search editorial videos
+      operationId: searchVideosEditorial
+      tags: [Search]
+      parameters:
+        - $ref: "#/components/parameters/Phrase"
+        - $ref: "#/components/parameters/Page"
+        - $ref: "#/components/parameters/PageSize"
+      responses:
+        "200":
+          description: Search results
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/VideoSearchResult"
+  /images:
+    get:
+      summary: Get bulk image metadata
+      operationId: getImages
+      tags: [Images]
+      parameters:
+        - in: query
+          name: ids
+          required: true
+          schema: { type: string }
+          description: Comma-separated list of image IDs
+        - in: query
+          name: fields
+          schema: { type: string }
+      responses:
+        "200":
+          description: Image metadata
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  images:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Image"
+  /images/{id}:
+    parameters:
+      - $ref: "#/components/parameters/AssetId"
+    get:
+      summary: Get a single image's metadata
+      operationId: getImage
+      tags: [Images]
+      responses:
+        "200":
+          description: Image
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Image"
+  /videos:
+    get:
+      summary: Get bulk video metadata
+      operationId: getVideos
+      tags: [Videos]
+      parameters:
+        - in: query
+          name: ids
+          required: true
+          schema: { type: string }
+        - in: query
+          name: fields
+          schema: { type: string }
+      responses:
+        "200":
+          description: Video metadata
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  videos:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Video"
+  /videos/{id}:
+    parameters:
+      - $ref: "#/components/parameters/AssetId"
+    get:
+      summary: Get a single video's metadata
+      operationId: getVideo
+      tags: [Videos]
+      responses:
+        "200":
+          description: Video
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Video"
+  /downloads/{image_id}:
+    parameters:
+      - in: path
+        name: image_id
+        required: true
+        schema: { type: string }
+    post:
+      summary: Request a download URL for a licensed image
+      operationId: downloadImage
+      tags: [Downloads]
+      security:
+        - apiKey: []
+          oauth2: [download]
+      parameters:
+        - in: query
+          name: size
+          schema: { type: string }
+        - in: query
+          name: product_id
+          schema: { type: string }
+      responses:
+        "200":
+          description: Download URL
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  uri: { type: string, format: uri }
+  /countries:
+    get:
+      summary: List available countries
+      operationId: getCountries
+      tags: [Reference]
+      responses:
+        "200":
+          description: Countries list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  countries:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code: { type: string }
+                        name: { type: string }
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: Api-Key
+      description: API consumer key, sent as the api-key header.
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 client credentials for elevated operations.
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.gettyimages.com/oauth2/token
+          scopes:
+            read: Read access to assets
+            download: Request download URLs for licensed assets
+  parameters:
+    Phrase:
+      in: query
+      name: phrase
+      schema: { type: string }
+    Page:
+      in: query
+      name: page
+      schema: { type: integer, minimum: 1, default: 1 }
+    PageSize:
+      in: query
+      name: page_size
+      schema: { type: integer, minimum: 1, maximum: 100, default: 30 }
+    AssetId:
+      in: path
+      name: id
+      required: true
+      schema: { type: string }
+  schemas:
+    ImageSearchResult:
+      type: object
+      properties:
+        result_count: { type: integer }
+        images:
+          type: array
+          items:
+            $ref: "#/components/schemas/Image"
+    VideoSearchResult:
+      type: object
+      properties:
+        result_count: { type: integer }
+        videos:
+          type: array
+          items:
+            $ref: "#/components/schemas/Video"
+    Image:
+      type: object
+      properties:
+        id: { type: string }
+        title: { type: string }
+        caption: { type: string }
+        asset_family: { type: string, enum: [creative, editorial] }
+        collection_code: { type: string }
+        collection_name: { type: string }
+        date_created: { type: string, format: date-time }
+        display_sizes:
+          type: array
+          items:
+            type: object
+            properties:
+              name: { type: string }
+              uri: { type: string, format: uri }
+        artist: { type: string }
+    Video:
+      type: object
+      properties:
+        id: { type: string }
+        title: { type: string }
+        caption: { type: string }
+        asset_family: { type: string, enum: [creative, editorial] }
+        clip_length: { type: string }
+        date_created: { type: string, format: date-time }
+        display_sizes:
+          type: array
+          items:
+            type: object
+            properties:
+              name: { type: string }
+              uri: { type: string, format: uri }
