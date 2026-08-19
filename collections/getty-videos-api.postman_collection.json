@@ -1,0 +1,238 @@
+{
+  "item": [
+    {
+      "id": "bd25035f-d7c5-45c8-8bd6-7ca261fced89",
+      "name": "Videos",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f4599b24-3d3f-4dfe-956b-4d52fa6df2ef",
+          "name": "Get bulk video metadata",
+          "request": {
+            "name": "Get bulk video metadata",
+            "description": {},
+            "url": {
+              "path": [
+                "videos"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "75535380-6350-4b0f-b51c-e12bdd4727fe",
+              "name": "Video metadata",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "videos"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"videos\": [\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"caption\": \"string\",\n      \"asset_family\": \"creative\",\n      \"clip_length\": \"string\",\n      \"date_created\": \"2012-07-13T18:49:34.925Z\",\n      \"display_sizes\": [\n        {\n          \"name\": \"string\",\n          \"uri\": \"https://KRWlULCHheN.pdhhMzMFvql9TiCr,h1Kg2wrhk2.B6BtLxeV\"\n        },\n        {\n          \"name\": \"string\",\n          \"uri\": \"http://PvjCWfmE.belRTlB9bPNt8CPE9Ttyk4q9bS\"\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"caption\": \"string\",\n      \"asset_family\": \"creative\",\n      \"clip_length\": \"string\",\n      \"date_created\": \"2000-02-10T00:30:16.523Z\",\n      \"display_sizes\": [\n        {\n          \"name\": \"string\",\n          \"uri\": \"http://THDwDAqCCWAUFtMcDUjJtH.omWHrcaMjL,\"\n        },\n        {\n          \"name\": \"string\",\n          \"uri\": \"https://HHDBxOYa.vrirUZPFQLPEAxroLADfutL9.M7EAu01BJkPYKgtXRb2ut-yeWId,xcUXUawhXeInuU6dLUlCK\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ac34110b-8696-4c55-822a-d200462c8ef4",
+          "name": "Get a single video's metadata",
+          "request": {
+            "name": "Get a single video's metadata",
+            "description": {},
+            "url": {
+              "path": [
+                "videos",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "be0e70e8-20a3-4091-98e4-c3c717384e65",
+              "name": "Video",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "videos",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"title\": \"string\",\n  \"caption\": \"string\",\n  \"asset_family\": \"editorial\",\n  \"clip_length\": \"string\",\n  \"date_created\": \"2025-01-03T06:43:12.516Z\",\n  \"display_sizes\": [\n    {\n      \"name\": \"string\",\n      \"uri\": \"http://WrJWNHEl.cbmhp1V-UErP5mPD9GngWcnYMf6AKxBWyMOHZMlYPo7WStw\"\n    },\n    {\n      \"name\": \"string\",\n      \"uri\": \"https://QHueR.indhOC+Pz,.t\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.gettyimages.com/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Api-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6008e703-9ae7-4358-a9fe-291b81794d33",
+    "name": "Getty Images Downloads Videos API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Best-effort OpenAPI 3.1 description of the Getty Images API (v3) covering\ncreative and editorial image search, video search, asset detail retrieval,\ndownload requests, and reference lookups. All requests require an api-key\nheader; elevated operations require an OAuth 2.0 client-credentials bearer\ntoken. Sourced from https://developer.gettyimages.com/docs/ and\nhttps://api.gettyimages.com/swagger.\n\n\nContact Support:\n Name: Getty Images Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}

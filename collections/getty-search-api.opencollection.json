@@ -1,0 +1,163 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Getty Images Downloads Search API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Api-Key",
+      "value": "{{Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search creative images",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gettyimages.com/v3/search/images/creative",
+            "params": [
+              {
+                "name": "phrase",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort_order",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "orientations",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search creative images"
+        },
+        {
+          "info": {
+            "name": "Search editorial images",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gettyimages.com/v3/search/images/editorial",
+            "params": [
+              {
+                "name": "phrase",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "editorial_segments",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_from",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_to",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search editorial images"
+        },
+        {
+          "info": {
+            "name": "Search creative videos",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gettyimages.com/v3/search/videos/creative",
+            "params": [
+              {
+                "name": "phrase",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search creative videos"
+        },
+        {
+          "info": {
+            "name": "Search editorial videos",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gettyimages.com/v3/search/videos/editorial",
+            "params": [
+              {
+                "name": "phrase",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search editorial videos"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

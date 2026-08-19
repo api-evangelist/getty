@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Getty Downloads Images API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Api-Key",
+      "value": "{{Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Images",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get bulk image metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gettyimages.com/v3/images",
+            "params": [
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of image IDs"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get bulk image metadata"
+        },
+        {
+          "info": {
+            "name": "Get a single image's metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gettyimages.com/v3/images/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a single image's metadata"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,178 @@
+{
+  "item": [
+    {
+      "id": "c18fe906-6da1-4997-a480-8858be465c73",
+      "name": "Downloads",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fa8ac72d-fee5-4b7b-a117-d936eba9aeac",
+          "name": "Request a download URL for a licensed image",
+          "request": {
+            "name": "Request a download URL for a licensed image",
+            "description": {},
+            "url": {
+              "path": [
+                "downloads",
+                ":image_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "product_id",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "image_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Api-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7fbd9194-c14d-42eb-be83-378c07910cac",
+              "name": "Download URL",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "downloads",
+                    ":image_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "size",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "product_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "image_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uri\": \"https://nfiYLiopHUQVYWdmDqUjgdUSW.iqhE40DY1hOWFZMx24qa\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.gettyimages.com/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Api-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a0c5d113-e3b1-400a-8f39-ca05c63a1a7b",
+    "name": "Getty Images Downloads API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Best-effort OpenAPI 3.1 description of the Getty Images API (v3) covering\ncreative and editorial image search, video search, asset detail retrieval,\ndownload requests, and reference lookups. All requests require an api-key\nheader; elevated operations require an OAuth 2.0 client-credentials bearer\ntoken. Sourced from https://developer.gettyimages.com/docs/ and\nhttps://api.gettyimages.com/swagger.\n\n\nContact Support:\n Name: Getty Images Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}

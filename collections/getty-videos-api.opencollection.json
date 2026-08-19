@@ -1,0 +1,67 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Getty Images Downloads Videos API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Api-Key",
+      "value": "{{Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Videos",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get bulk video metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gettyimages.com/v3/videos",
+            "params": [
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get bulk video metadata"
+        },
+        {
+          "info": {
+            "name": "Get a single video's metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gettyimages.com/v3/videos/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a single video's metadata"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

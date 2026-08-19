@@ -1,0 +1,238 @@
+{
+  "item": [
+    {
+      "id": "01b372ff-f04f-4ed2-b733-c70f066ea826",
+      "name": "Images",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4d78a2af-3184-47cf-b858-42ea5fa35175",
+          "name": "Get bulk image metadata",
+          "request": {
+            "name": "Get bulk image metadata",
+            "description": {},
+            "url": {
+              "path": [
+                "images"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "(Required) Comma-separated list of image IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "34463c61-dec7-47f9-88ba-e1abaf071207",
+              "name": "Image metadata",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "images"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"images\": [\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"caption\": \"string\",\n      \"asset_family\": \"editorial\",\n      \"collection_code\": \"string\",\n      \"collection_name\": \"string\",\n      \"date_created\": \"1971-02-24T02:25:27.241Z\",\n      \"display_sizes\": [\n        {\n          \"name\": \"string\",\n          \"uri\": \"http://FjMwiWBSqUEeGzRkEeBNFGTIhP.uvpsOxq1LHIRf1TleN.zGFu6DOFodqrZyQkXdgEva76Gxe\"\n        },\n        {\n          \"name\": \"string\",\n          \"uri\": \"http://hDmDJeeqy.shzzL9XPOwQ7NQwPY-BSt9ro+,TbnR9CXJlsxO1p-9rHbhrW26d3q,wufGGZIG\"\n        }\n      ],\n      \"artist\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"caption\": \"string\",\n      \"asset_family\": \"creative\",\n      \"collection_code\": \"string\",\n      \"collection_name\": \"string\",\n      \"date_created\": \"1972-10-15T02:09:38.845Z\",\n      \"display_sizes\": [\n        {\n          \"name\": \"string\",\n          \"uri\": \"http://IijRLLBjLrwZWFcABCbmRjpXyytVRuRw.tfbpYQOE-nZbTsaJl\"\n        },\n        {\n          \"name\": \"string\",\n          \"uri\": \"http://VVTfQmxeniMXFyFHiQHNF.xtlbKSmGwHd1.PRwKuTPNSIxM+fbtJA\"\n        }\n      ],\n      \"artist\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "788831ba-cbf6-415b-b0c1-2d83e12f522d",
+          "name": "Get a single image's metadata",
+          "request": {
+            "name": "Get a single image's metadata",
+            "description": {},
+            "url": {
+              "path": [
+                "images",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4bd134d3-ca74-46dc-8d3c-fa9968f8d065",
+              "name": "Image",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "images",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"title\": \"string\",\n  \"caption\": \"string\",\n  \"asset_family\": \"editorial\",\n  \"collection_code\": \"string\",\n  \"collection_name\": \"string\",\n  \"date_created\": \"2012-06-30T23:41:02.516Z\",\n  \"display_sizes\": [\n    {\n      \"name\": \"string\",\n      \"uri\": \"https://XCq.icrwnSgoF.ZGa6YsEInjy9+DvUFqfe3NLK5ad\"\n    },\n    {\n      \"name\": \"string\",\n      \"uri\": \"https://nCnsuTnjiXfvDKul.fgfdGtxMGByLQKBhSDhII9GA8EBAR,sPid3+kwXaCoxy12lAO7oGmCiyBlXQBqk\"\n    }\n  ],\n  \"artist\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.gettyimages.com/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Api-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c8254089-ebf4-4157-90db-76b65cd7dfb0",
+    "name": "Getty Downloads Images API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Best-effort OpenAPI 3.1 description of the Getty Images API (v3) covering\ncreative and editorial image search, video search, asset detail retrieval,\ndownload requests, and reference lookups. All requests require an api-key\nheader; elevated operations require an OAuth 2.0 client-credentials bearer\ntoken. Sourced from https://developer.gettyimages.com/docs/ and\nhttps://api.gettyimages.com/swagger.\n\n\nContact Support:\n Name: Getty Images Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}
