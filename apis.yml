@@ -23,6 +23,13 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/getty.png
 tags:
   - Stock Media
+  - Image
+  - Editorial
+  - Video
+  - Music
+  - Licensing
+tags_raw:
+  - Stock Media
   - Images
   - Editorial
   - Video
@@ -52,6 +59,8 @@ apis:
   humanURL: https://developer.gettyimages.com/docs/
   baseURL: https://api.gettyimages.com/v3
   tags:
+  - Image
+  tags_raw:
   - Images
   properties:
   - type: OpenAPI
