@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Getty Images Downloads Search API
   version: 3.0.0
@@ -127,6 +127,27 @@ paths:
               schema:
                 $ref: '#/components/schemas/VideoSearchResult'
 components:
+  parameters:
+    Phrase:
+      in: query
+      name: phrase
+      schema:
+        type: string
+    PageSize:
+      in: query
+      name: page_size
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 30
+    Page:
+      in: query
+      name: page
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
   schemas:
     ImageSearchResult:
       type: object
@@ -208,27 +229,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Video'
-  parameters:
-    Phrase:
-      in: query
-      name: phrase
-      schema:
-        type: string
-    PageSize:
-      in: query
-      name: page_size
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 30
-    Page:
-      in: query
-      name: page
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
   securitySchemes:
     apiKey:
       type: apiKey
